@@ -3,9 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dal Masetto</title>
+    <title>Dal masetto</title>
+    <style>
+        body{background-color: rgb(88, 86, 86);}        
+        .banner{display: flex; width: 100%; justify-content: center; transform: translateY(-30%);}        
+        .column{display: flex; flex-direction: column; justify-content: center; align-items: center;}        
+        .row{display: flex; flex-direction: row; justify-content: center; align-items: center;}        
+        img{border-radius: 50%; width: 40%; border: 2px solid black;}        
+        .bandera{width: 30%; height: 200px;}        
+        .cardGrend{background-color: #6b9367;}        
+        .cardWhite{background-color: white;}        
+        .cardRed{background-color: #be1e2d;}        
+
+        /* NUEVAS SECCIONES */
+        .categorias-section, .contenido-section {
+            margin-top: 40px;
+            padding: 20px;
+            background: #ffffff22;
+            border-radius: 12px;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            backdrop-filter: blur(3px);
+        }
+
+        .categorias-container {
+            margin-top: 20px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            min-height: 120px;
+        }
+
+        footer{
+            margin-top: 50px;
+            text-align: center;
+            padding: 20px;
+            color: white;
+            opacity: 0.8;
+        }
+    </style>
 </head>
 <body>
-    <h3>Welcome Dal Masetto</h3>
+
+    <div class="row">
+        <div class="cardGrend bandera"></div>
+        <div class="cardWhite bandera"></div>
+        <div class="cardRed bandera" ></div>
+    </div>
+
+    <div class="banner">
+        <div class="column">
+            <img src="./logo1.png" alt="">
+            <h2>Welcome to Dal Masetto</h2>
+        </div>
+    </div>
+
+    <!-- SECCIÓN DE CATEGORÍAS -->
+    <section class="categorias-section">
+        <h3>Categorías</h3>
+        <div class="categorias-container" id="categorias"></div>
+    </section>
+
+    <!-- SECCIÓN DE CONTENIDOS DE CADA CATEGORÍA -->
+    <section class="contenido-section">
+        <h3>Seleccione una categoría</h3>
+        <div id="contenidoCategoria"></div>
+    </section>
+
+    <footer>
+        <p>© 2025 Dal Masetto - Todos los derechos reservados</p>
+    </footer>
+
 </body>
 </html>
