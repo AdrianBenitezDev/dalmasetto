@@ -1,6 +1,10 @@
 window.onload = traerCategorias();
 
 async function traerCategorias() {
+
+
+  spinerSC(true);
+
   const url = "https://script.google.com/macros/s/AKfycbxT5zeNWK5O_z3Na_XVU_Rz6d8yw_uI2AZS94gp9XXrtBEzR4hMvlzqRUGuhezyytxa/exec?acc=th";
 
   try {
@@ -10,22 +14,37 @@ async function traerCategorias() {
     //console.log("Categorías:", data);
     let divCategoria=document.getElementById("categorias");
     data.forEach(categoria => {
-        divCategoria.innerHTML+=`<button class="btn btn-primary" onclick=traerPrecios("${categoria}")>${categoria}</button>`;
+        divCategoria.innerHTML+=`<button class="btn btn-primary" onclick='traerPrecios("${categoria}")'>${categoria}</button>`;
     });
-    
+      spinerSC(false);
     return data; // es un array con los nombres de las hojas
+
+    
   } catch (error) {
     console.error("Error obteniendo categorías:", error);
-    return [];
+      spinerSC(false);
+       let divCategoria=document.getElementById("categorias");
+      divCategoria.innerHTML=`<p>Revise su conexión a Internet!</p>`;
+    return ["MILANESAS"];
   }
 }
 
 async function traerPrecios(cat) {
 
-       divPrecios.innerHTML='';
+document.getElementById("titleCategoria").scrollIntoView({
+    behavior: "smooth"
+  });
 
-    let catFormateada=cat.replaceAll(' ','22%')
-  const url = `https://script.google.com/macros/s/AKfycbxT5zeNWK5O_z3Na_XVU_Rz6d8yw_uI2AZS94gp9XXrtBEzR4hMvlzqRUGuhezyytxa/exec?acc=tp&&cat=${catFormateada}`;
+   let catSinEspacio=cat.replaceAll('20%',' ');
+    document.getElementById("titleCategoria").textContent=catSinEspacio;
+
+
+       divPrecios.innerHTML='';
+         spinerC(true);
+
+
+   // let catFormateada=cat.replaceAll(' ','22%')
+  const url = `https://script.google.com/macros/s/AKfycbxT5zeNWK5O_z3Na_XVU_Rz6d8yw_uI2AZS94gp9XXrtBEzR4hMvlzqRUGuhezyytxa/exec?acc=tp&&cat=${cat}`;
 
   try {
     const res = await fetch(url);
@@ -39,22 +58,65 @@ async function traerPrecios(cat) {
 
     data.forEach(producto=>{
         
-        divPrecios.innerHTML+=`
+       divPrecios.innerHTML+=`
           <div class="card">
-    <div class="card-header">
-      <h3 class="product-name">${producto[1]}</h3>
-      <span class="product-price">${producto[2]}</span>
-    </div>
-    <p class="product-desc">
-      ${producto[3]}
-    </p>
-    <button class="btn-agregar">Agregar</button>
+
+          <div class="card-row">
+
+          <div class="card-column">         
+          
+                <div class="card-header">
+                  <h3 class="product-name">${producto[1]}</h3>
+                   <span class="dots"></span>
+                  <span class="product-price">$${producto[2]}</span>
+                </div>
+                <p class="product-desc">
+                  ${producto[3]}
+                </p>
+                
+          
+          </div>
+            <button class="btn-agregar">Agregar</button>
+            </div>
+   
   </div>
         `;
     })
+
+   
+    spinerC(false);
+    
     return data; // es un array con los nombres de las hojas
   } catch (error) {
+    
+    let divPrecios=document.getElementById('divPrecios');
+    spinerC(false);
+    divPrecios.innerHTML=`<p>Revise su conexión a Internet!</p>`
     console.error("Error obteniendo categorías:", error);
-    return [];
+    return []
   }
+}
+
+
+
+//let isLoading = false;
+
+function spinerSC(boleano) {
+
+    document.getElementById("spinnerSC").style.display =
+        boleano ? "block" : "none";
+}
+
+
+function spinerC(boleano) {
+
+    document.getElementById("spinnerC").style.display =
+        boleano ? "block" : "none";
+}
+
+
+function irHader(){
+  document.getElementById("irHader").scrollIntoView({
+    behavior: "smooth"
+  });
 }
