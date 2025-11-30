@@ -93,19 +93,18 @@
 
 
 .header{
-  display: flex;
-  flex-direction: row;
-  background-color: #c6c7c68f;
-  padding: 20px;
-  top: 0px;
-  z-index: 300;
-  border-radius: 12px;
-  position: sticky;
-
-  margin-top: 10px;
-      align-items: center;
+width: -webkit-fill-available;
+    display: flex;
+    flex-direction: row;
+    background-color: #c6c7c68f;
+    padding: 20px;
+    top: 0px;
+    z-index: 300;
+    border-radius: 12px;
+    position: fixed;
+    margin-top: 10px;
+    align-items: center;
     justify-content: flex-end;
-
 }
 .header > * {
   margin-left: 20px;

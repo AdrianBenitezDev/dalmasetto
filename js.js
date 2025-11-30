@@ -197,8 +197,7 @@ verPedidos();
 
 }
 function mas(id){
-  console.log(id)
-  console.log(arrayPedido)
+ 
  
 arrayPedido[id][4]=Number(arrayPedido[id][4])+1;
 
