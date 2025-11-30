@@ -210,12 +210,11 @@ function dele(id){
 if(arrayPedido[id][4]&&arrayPedido.length>1){
  arrayPedido.splice(id, 1);
   document.getElementById("contadorCarrito").textContent = arrayPedido.length;
-
-  
 verPedidos();
 }else{
-  document.getElementById("cuerpoPedido").innerHTML="<p>Lista de Pedidos Vacia</p>"
-   document.getElementById("contadorCarrito").textContent = arrayPedido.length;
+  arrayPedido.splice(id, 1);
+  document.getElementById("rowTabla").innerHTML="<td></td><td><p>La lista de Pedidos esta Vacia</p></td><td></td><td></td><td></td>"
+   document.getElementById("contadorCarrito").textContent = "0";
 
 }
 }
