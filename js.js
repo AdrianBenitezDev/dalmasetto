@@ -189,7 +189,7 @@ function cerrarPanelPedidos(){
 
 function menos(id){
 
-if(arrayPedido[id][4]>1){
+if(arrayPedido.length>1&&arrayPedido[id][4]){
 arrayPedido[id][4]=Number(arrayPedido[id][4])-1;
 
 verPedidos();
@@ -207,11 +207,15 @@ verPedidos();
 
 function dele(id){
 
-if(arrayPedido[id][4]){
+if(arrayPedido[id][4]&&arrayPedido.length>1){
  arrayPedido.splice(id, 1);
   document.getElementById("contadorCarrito").textContent = arrayPedido.length;
 
   
 verPedidos();
+}else{
+  document.getElementById("cuerpoPedido").innerHTML="<p>Lista de Pedidos Vacia</p>"
+   document.getElementById("contadorCarrito").textContent = arrayPedido.length;
+
 }
 }
