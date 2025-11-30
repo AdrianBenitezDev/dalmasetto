@@ -149,6 +149,12 @@ function irHader(){
   });
 }
 
+function irTop(){
+  document.getElementById("bandera").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
 function verPedidos(){
 if(arrayPedido.length>0){
 
