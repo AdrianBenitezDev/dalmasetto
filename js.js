@@ -1,5 +1,7 @@
 window.onload = traerCategorias();
 
+let arrayPedido=[]
+
 async function traerCategorias() {
 
 
@@ -76,12 +78,21 @@ document.getElementById("titleCategoria").scrollIntoView({
                 
           
           </div>
-            <button class="btn-agregar">Agregar</button>
+            <button class="btn-agregar" >Agregar</button>
             </div>
    
   </div>
         `;
     })
+
+    const botones = document.querySelectorAll(".btn-agregar");
+
+botones.forEach((btn, index) => {
+  btn.addEventListener("click", () => {
+    addProduct(data[index]); // acá el array sigue intacto
+  });
+});
+
 
    
     spinerC(false);
@@ -95,6 +106,23 @@ document.getElementById("titleCategoria").scrollIntoView({
     console.error("Error obteniendo categorías:", error);
     return []
   }
+}
+
+//
+function addProduct(pro) {
+
+  let existe = arrayPedido.find(ele => ele[0] == pro[0]);
+
+  if (existe) {
+    // Si existe, sumo cantidad
+    existe[4] += 1;
+
+  } else {
+    // Si no existe, agrego uno nuevo
+    arrayPedido.push([pro[0], pro[1], pro[2], pro[3], 1]);
+  }
+
+  document.getElementById("contadorCarrito").textContent = arrayPedido.length;
 }
 
 
@@ -119,4 +147,72 @@ function irHader(){
   document.getElementById("irHader").scrollIntoView({
     behavior: "smooth"
   });
+}
+
+function verPedidos(){
+if(arrayPedido.length>0){
+
+  let total=0;
+  document.getElementById("panelBlack").style.display="flex";
+
+  let row="";
+  arrayPedido.forEach((pedido,index)=>{
+
+  row+=`
+          <tr>
+            <td><button onclick="menos(${index})" >-</button> ${pedido[4]} <button onclick="mas(${index})">+</button></td>
+            <td class="product-name">${pedido[1]}</td>
+            <td class="product-price">$${pedido[2]}</td>
+            <td class=""><button onclick="dele(${index})">Borrar</button></td>
+          </tr>
+  `;
+
+  total += Number(pedido[2]) * Number(pedido[4]);
+
+
+  })
+
+  document.getElementById("rowTabla").innerHTML=row;
+    document.getElementById("Total").innerHTML="$ "+total;
+
+
+}else{
+alert("no selecciono ningún producto!")
+}
+}
+
+function cerrarPanelPedidos(){
+  document.getElementById("panelBlack").style.display="none";
+}
+
+
+
+function menos(id){
+
+if(arrayPedido[id][4]>1){
+arrayPedido[id][4]=Number(arrayPedido[id][4])-1;
+
+verPedidos();
+}
+
+}
+function mas(id){
+  console.log(id)
+  console.log(arrayPedido)
+ 
+arrayPedido[id][4]=Number(arrayPedido[id][4])+1;
+
+verPedidos();
+ 
+}
+
+function dele(id){
+
+if(arrayPedido[id][4]){
+ arrayPedido.splice(id, 1);
+  document.getElementById("contadorCarrito").textContent = arrayPedido.length;
+
+  
+verPedidos();
+}
 }

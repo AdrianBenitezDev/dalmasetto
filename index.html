@@ -5,10 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dal masetto</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./stylePedido.css">
       <link rel="icon" type="image/png" href="/favicon.png">
     
 </head>
 <body>
+
+ <div class="header">
+
+    <div class="btn2 btn-primary icon-container row" onclick="verPedidos()">
+        <div class="column">
+            <img src="./delivery.png" style="width: 30px; height: 30px;">
+            <span class="tuPedido">Tu Pedido!</span>  
+        </div>
+         <span id="contadorCarrito" class="badge">0</span>
+    </div>
+
+  
+</div>
 
     <div class="row">
         <div class="cardGrend bandera"></div>
@@ -16,8 +30,8 @@
         <div class="cardRed bandera" ></div>
     </div>
 
-    <a class="btn btn-secondary" style="position: absolute; top: 0px; right: 0px; z-index: 200; margin: 10px;" href="https://docs.google.com/spreadsheets/d/1ljtTs20pN-SJbGOAUS9yJCyXoMcHAktYzBMObw_rd6c/edit?gid=1735871118#gid=1735871118" target="_blank" rel="noopener noreferrer">Ingresar</a>
 
+    
     <div class="banner">
         <div class="column">
             <img src="./logo1.png" alt="">
@@ -75,12 +89,33 @@ botones de prueba -->
 <!-- 
               <button class="btn btn-secondary">Cancelar</button>
           <button class="btn btn-outline">Ver más</button> -->
-    
 
+<div class="panelBlack" id="panelBlack">
+                
+            <div class="panelPedido" id="panelPedidos"  style="margin-top: 120px;">
+                <div class="title">Revisar mi Pedido</div>
+                <div class="cuerpoPedido" >
+                    <table class="view" id="cuerpoPedido">
+                        <thead><tr><td>Cantidad</td><td>Producto</td><td>Precio</td><td>Acción</td></tr></thead>
+                        <tbody id="rowTabla"></tbody>
+                        <tr><td></td><td></td><td></td></tr>
+                        <tr class="total"><td>Total</td><td></td><td></td><td><h3 id="Total"></h3></td></tr>
+                    </table>
+                </div>
+                <div class="row"><button  class="btn btn-primary">Finalizar mi Pedido</button> <button class="btn btn-primary" onclick="cerrarPanelPedidos()">Continuar Comprando</button></div>
+            </div>
+
+</div>
 
     <footer>
         <p class="footer">© 2025 Dal Masetto - Todos los derechos reservados</p>
+      <a class="btn-secondary"  
+       href="https://docs.google.com/spreadsheets/d/1ljtTs20pN-SJbGOAUS9yJCyXoMcHAktYzBMObw_rd6c/edit?gid=1735871118#gid=1735871118"
+       target="_blank" 
+       rel="noopener noreferrer">
+       Ingresar
+    </a>
     </footer>
-<script src="./javascript.js"></script>
+<script src="./js.js"></script>
 </body>
 </html>
